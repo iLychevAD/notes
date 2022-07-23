@@ -1,4 +1,6 @@
 # notes
+Test DB backups - https://www.timescale.com/blog/how-i-learned-to-stop-worrying-and-love-postgresql-on-kubernetes-continuous-backup-restore-validation-on-timescale-forge/
+
 Config file examples for many CI systems in one place:
 https://testdriven.io/blog/faster-ci-builds-with-docker-cache/
 
