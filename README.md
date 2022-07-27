@@ -38,3 +38,7 @@ while true; do
   sleep $interval; 
 done
 ```
+
+HC Vault admin policies:
+
+https://stackoverflow.com/questions/63516147/root-policy-in-hcl-for-hashicorp-vault
