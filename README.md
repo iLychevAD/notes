@@ -1,4 +1,7 @@
 # notes
+How to specify remote Jenkins path in DSL plugin for multibranch pipeline
+https://www.jvt.me/posts/2019/12/06/jenkins-job-dsl-multibranch-external-script/
+
 Script to populate Vault policies from files https://www.hashicorp.com/blog/codifying-vault-policies-and-configuration
 
 Test DB backups - https://www.timescale.com/blog/how-i-learned-to-stop-worrying-and-love-postgresql-on-kubernetes-continuous-backup-restore-validation-on-timescale-forge/
