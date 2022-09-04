@@ -1,3 +1,19 @@
+Simple ArgoCD plugin usage:
+
+kubectl -n argocd get cm argocd-cm -o yaml
+apiVersion: v1
+data:
+  configManagementPlugins: |
+    - name: kustomized-helm
+      generate:
+        command: [sh, -c]
+        args: ["DOCKER_REG_IP=$(kubectl -n registry get svc registry -o jsonpath={.spec.clusterIP}) && sed -i \"s/DOCKER_REGISTRY_IP/$DOCKER_REG_IP/g\" kustomization.yaml | helm template $ARGOCD_APP_NAME --namespace $ARGOCD_APP_NAMESPACE . > all.yaml && kustomize build"]
+    - name: kustomized
+      generate:
+        command: [sh, -c]
+        args: ["DOCKER_REG_IP=$(kubectl -n registry get svc registry -o jsonpath={.spec.clusterIP}) && sed -i \"s/DOCKER_REGISTRY_IP/$DOCKER_REG_IP/g\" kustomization.yaml | kustomize build"]
+(from https://github.com/argoproj/argo-cd/issues/5202#issue-781015743)
+
 # notes
 How to specify remote Jenkins path in DSL plugin for multibranch pipeline
 https://www.jvt.me/posts/2019/12/06/jenkins-job-dsl-multibranch-external-script/
