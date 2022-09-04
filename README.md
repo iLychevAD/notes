@@ -1,5 +1,6 @@
 Simple ArgoCD plugin usage:
 
+```
 kubectl -n argocd get cm argocd-cm -o yaml
 apiVersion: v1
 data:
@@ -12,6 +13,7 @@ data:
       generate:
         command: [sh, -c]
         args: ["DOCKER_REG_IP=$(kubectl -n registry get svc registry -o jsonpath={.spec.clusterIP}) && sed -i \"s/DOCKER_REGISTRY_IP/$DOCKER_REG_IP/g\" kustomization.yaml | kustomize build"]
+```
 (from https://github.com/argoproj/argo-cd/issues/5202#issue-781015743)
 
 # notes
