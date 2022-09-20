@@ -67,6 +67,7 @@ HC Vault admin policies:
 https://stackoverflow.com/questions/63516147/root-policy-in-hcl-for-hashicorp-vault
 
 K8s user:
+```
 # https://faun.pub/how-to-add-an-user-to-a-kubernetes-cluster-an-overview-of-authn-in-k8s-d198adc08119
 USERNAME=dev
 openssl genrsa -out ${USERNAME}.key 2048
@@ -98,4 +99,4 @@ kubectl config set-credentials ${USERNAME} --client-certificate=${USERNAME}.crt 
 #
 kubectl config set-context ${USERNAME}@<k8s name> --user=${USERNAME} --cluster=<k8s name> --namespace=<some>
 kubectl config use-context ${USERNAME}@<k8s name>
-
+```
