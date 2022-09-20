@@ -65,3 +65,37 @@ done
 HC Vault admin policies:
 
 https://stackoverflow.com/questions/63516147/root-policy-in-hcl-for-hashicorp-vault
+
+K8s user:
+# https://faun.pub/how-to-add-an-user-to-a-kubernetes-cluster-an-overview-of-authn-in-k8s-d198adc08119
+USERNAME=dev
+openssl genrsa -out ${USERNAME}.key 2048
+openssl req -new -key ${USERNAME}.key -out ${USERNAME}.csr
+#
+openssl req  -noout -text -in ./${USERNAME}.csr
+#
+BASE64_CSR=`cat ${USERNAME} | base64 -w 0`
+#
+cat <<EOF >> ${USERNAME}-csr.yaml
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:      
+  name: ${USERNAME}     
+spec:          
+  request: ${BASE64_CSR}
+  signerName: kubernetes.io/kube-apiserver-client                                                                               
+  usages:   
+  - client auth
+EOF
+#
+kubectl apply -f ${USERNAME}-csr.yaml
+kubectl certificate approve ${USERNAME} 
+kubeconfig-client-certificate-data=`kubectl get csr ${USERNAME} -o yaml | grep certificate` # base64 decode and put into ${USERNAME}.crt
+#
+# Generate kubeconfig
+kubectl config set-cluster <k8s name> --certificate-authority=ca.crt --server=https://<DNS-name>:6443 --embed-certs
+kubectl config set-credentials ${USERNAME} --client-certificate=${USERNAME}.crt --client-key=${USERNAME}.key --embed-certs
+#
+kubectl config set-context ${USERNAME}@<k8s name> --user=${USERNAME} --cluster=<k8s name> --namespace=<some>
+kubectl config use-context ${USERNAME}@<k8s name>
+
