@@ -1,3 +1,5 @@
+https://sysdig.com/blog/monitor-nginx-prometheus/
+
 https://medium.com/@kief/https-medium-com-kief-using-pipelines-to-manage-environments-with-infrastructure-as-code-b37285a1cbf5
 
 Simple ArgoCD plugin usage:
