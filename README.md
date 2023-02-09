@@ -1,3 +1,6 @@
+Protect CloudFront with IAM SSO
+https://www.serverlessguru.com/blog/use-iam-identity-center-aws-sso-to-protect-your-cloudfront-served-application
+
 https://sysdig.com/blog/monitor-nginx-prometheus/
 
 https://medium.com/@kief/https-medium-com-kief-using-pipelines-to-manage-environments-with-infrastructure-as-code-b37285a1cbf5
