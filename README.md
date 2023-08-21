@@ -1,3 +1,6 @@
+AWS SSM session IAM policy
+https://medium.com/bigcommerce-developer-blog/why-rewind-said-hello-to-aws-session-manager-and-goodbye-to-ssh-93b41ee5ac85
+
 Protect CloudFront with IAM SSO
 https://www.serverlessguru.com/blog/use-iam-identity-center-aws-sso-to-protect-your-cloudfront-served-application
 
